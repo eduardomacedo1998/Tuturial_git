@@ -1,0 +1,96 @@
+.fundo{
+    width: 500px;
+    border: solid sienna;
+    height: 30px;
+    padding: 2%;
+    background-color: rgb(33, 68, 68);
+    margin-bottom: 2%;
+}
+
+
+.fundo label{
+    font-weight: bold;
+    color: aliceblue;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; /* Adicionando a propriedade text-align para centralizar o texto */
+}
+
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+/*CSS DO BUSCADOR*/
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo para o contêiner do formulário de busca */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Estilo para o formulário de busca */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo para a label do campo de busca */
+.search-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o contêiner do campo de busca e botão */
+.search-input-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para o campo de busca */
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+    margin-right: 5px;
+}
+
+/* Estilo para o botão de busca */
+.search-button {
+    padding: 8px 16px;
+    background-color: #4285F4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilo para o botão de busca quando o mouse passa por cima */
+.search-button:hover {
+    background-color: #3367D6;
+}
+
