@@ -2,7 +2,7 @@
 
 This is a simple PHP-based user authentication system with registration, login, and logout functionality.
 
-## Setup Instructions
+## Setup Instructions  teste
 
 1. **Create the Database**
    - In your MySQL server (e.g., via phpMyAdmin or MySQL CLI), create a new database named `flashcard`:
