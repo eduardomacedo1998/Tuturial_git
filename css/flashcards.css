@@ -1,0 +1,229 @@
+/* Variables */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --card-bg: #fff;
+}
+.mode-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.mode-btn {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.mode-btn.active {
+    background: var(--secondary-color);
+}
+#quizContainer {
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+.quiz-question h3 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+.quiz-choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.choice-btn {
+    flex: 1 1 40%;
+    padding: 10px;
+    background: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.choice-btn.correct {
+    background: #5cb85c;
+    color: #fff;
+}
+.choice-btn.wrong {
+    background: #d9534f;
+    color: #fff;
+}
+.choice-btn:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+.quiz-feedback {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+.quiz-result {
+    text-align: center;
+}
+.quiz-result button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Styles for FlashCards interface */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.flashcards-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    position: relative;
+}
+
+.flashcard {
+    perspective: 1000px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    transition: transform 0.3s ease;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 60%; /* Aspect ratio 5:3 */
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flashcard-front {
+    background: #ffffff;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    padding: 20px;
+}
+
+.flashcard-back {
+    background: #5cb85c;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.flashcard h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.flashcard p small {
+    display: block;
+    margin-top: 8px;
+    color: #666;
+}
+
+.flashcards-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.flashcards-controls button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.flashcards-controls button:hover {
+    background: var(--secondary-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.list-subjects,
+.list-topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.list-subjects a button,
+.list-topics .topic-item button {
+    display: block;
+    width: 100%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+/* Separate buttons within each topic-item for more breathing room */
+.list-topics .topic-item {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.list-subjects a button:hover,
+.list-topics .topic-item button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Ensure consistent spacing around controls and containers */
+.mode-selector,
+.flashcards-container,
+#quizContainer {
+    margin-top: 20px;
+}
