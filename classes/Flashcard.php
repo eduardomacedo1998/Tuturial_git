@@ -9,6 +9,7 @@ class Flashcard
         $this->conn = $dbConnection;
     }
 
+    // Cria um novo flashcard
     public function create($userId, $subjectId, $topicId, $question, $answer)
     {
         $stmt = $this->conn->prepare('INSERT INTO flashcards (user_id, subject_id, topic_id, question, answer) VALUES (?, ?, ?, ?, ?)');
@@ -16,6 +17,7 @@ class Flashcard
         return $stmt->execute();
     }
 
+    // Obtém todos os flashcards de um usuário
     public function getAllByUser($userId)
     {
         $stmt = $this->conn->prepare(
@@ -31,6 +33,8 @@ class Flashcard
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+
+    // Obtém um flashcard por ID
     public function getById($id)
     {
         $stmt = $this->conn->prepare(
@@ -46,6 +50,7 @@ class Flashcard
         return $result->fetch_assoc();
     }
 
+    // Atualiza um flashcard existente
     public function update($id, $subjectId, $topicId, $question, $answer)
     {
         $stmt = $this->conn->prepare('UPDATE flashcards SET subject_id = ?, topic_id = ?, question = ?, answer = ? WHERE id = ?');
@@ -53,6 +58,7 @@ class Flashcard
         return $stmt->execute();
     }
 
+    // Deleta um flashcard
     public function delete($id)
     {
         $stmt = $this->conn->prepare('DELETE FROM flashcards WHERE id = ?');
@@ -60,6 +66,7 @@ class Flashcard
         return $stmt->execute();
     }
 
+    // Registra uma tentativa de quiz
     public function logQuizAttempt($userId, $flashcardId, $isCorrect)
     {
         $stmt = $this->conn->prepare(
@@ -68,4 +75,26 @@ class Flashcard
         $stmt->bind_param('iii', $userId, $flashcardId, $isCorrect);
         return $stmt->execute();
     }
+
+    // Obtém assuntos (topics) por ID de matéria (subject)
+    public function getTopicsBySubjectId($subjectId)
+    {
+        $stmt = $this->conn->prepare("SELECT id, name FROM topics WHERE subject_id = ?");  // Simplificado: sem variável extra
+    $stmt->bind_param('i', $subjectId);  // Corrigido: apenas um parâmetro
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Cria uma nova matéria (subject)
+    public function createSubject($name)
+    {
+        $stmt = $this->conn->prepare('INSERT INTO subjects (name) VALUES (?)');
+        $stmt->bind_param('s', $name);
+        if ($stmt->execute()) {
+            return $this->conn->insert_id;  // Retorna o ID da nova matéria
+        }
+        return false;
+    }
+
 }
