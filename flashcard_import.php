@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $blocks = preg_split('/\R{2,}/', trim($content));
 
             // ==== Resolver matéria e assunto antes de criar flashcards ====
+
             $model = new Flashcard($conn);
             $rawSubject   = $_POST['subject_id'] ?? '';
             $rawTopic     = $_POST['topic_id'] ?? '';
